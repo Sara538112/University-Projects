@@ -1,1 +1,152 @@
+Create schema Employee;
+Create schema Financial;
+Create schema Manager;
+Create schema Supervisor;
+Create schema Salon;
+
+
+CREATE TABLE  "Manager"."GeneralManager" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY
+	
+);
+
+CREATE TABLE "Manager"."SalonManager" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."GeneralManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE "Manager"."FinancialManager" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."GeneralManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+CREATE TABLE "Supervisor"."HCare" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."SalonManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE "Supervisor"."HCut" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."SalonManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE "Supervisor"."HDye" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."SalonManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+CREATE TABLE "Employee"."HDye" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+	"SupervisorID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."SalonManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	CONSTRAINT fk_supervisor
+    FOREIGN KEY ("SupervisorID") REFERENCES "Supervisor"."HDye" ("ID")
+    ON Update Cascade	
+);
+
+CREATE TABLE "Employee"."HCut" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+	"SupervisorID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."SalonManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	CONSTRAINT fk_supervisor
+    FOREIGN KEY ("SupervisorID") REFERENCES "Supervisor"."HCut" ("ID")
+    ON Update Cascade	
+);
+CREATE TABLE "Employee"."HCare" (
+    "FullName" VARCHAR(50) NOT NULL,
+    "ID" SERIAL PRIMARY KEY,
+    "DirectManagerID" INTEGER,
+	"SupervisorID" INTEGER,
+    CONSTRAINT fk_direct_manager
+        FOREIGN KEY ("DirectManagerID") REFERENCES "Manager"."SalonManager" ("ID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	CONSTRAINT fk_supervisor
+    FOREIGN KEY ("SupervisorID") REFERENCES "Supervisor"."HCare" ("ID")
+    ON Update Cascade	
+);
+
+
+
+CREATE TABLE "Salon"."HCareApt" (
+    "AppNO" SERIAL UNIQUE PRIMARY KEY,
+    "EmployeeID" INTEGER NOT NULL,
+    "DateTime" TIMESTAMP NOT NULL,
+    "Status" VARCHAR(20) CHECK ( "Status" IN ('scheduled', 'completed', 'cancelled')),
+    "ManagerApproval" BOOLEAN,
+    "SupervisorApproval" BOOLEAN,
+	"Cost" NUMERIC ,
+    CONSTRAINT fk_employee
+        FOREIGN KEY ("EmployeeID") REFERENCES "Supervisor"."HCare" ("ID")
+);
+ALTER TABLE "Salon"."HCareApt"
+ADD COLUMN "appPeriod" NUMERIC;
+
+CREATE TABLE "Salon"."HCutApt" (
+    "AppNO" SERIAL UNIQUE PRIMARY KEY,
+    "EmployeeID" INTEGER NOT NULL,
+    "DateTime" TIMESTAMP NOT NULL,
+    "Status" VARCHAR(20) CHECK ( "Status" IN ('scheduled', 'completed', 'cancelled')),
+    "ManagerApproval" BOOLEAN,
+    "SupervisorApproval" BOOLEAN,
+	"Cost" NUMERIC ,
+    CONSTRAINT fk_employee
+        FOREIGN KEY ("EmployeeID") REFERENCES "Supervisor"."HCut" ("ID")
+);
+ALTER TABLE "Salon"."HCutApt"
+ADD COLUMN "appPeriod" NUMERIC;
+
+CREATE TABLE "Salon"."HDyeApt" (
+    "AppNO" SERIAL UNIQUE PRIMARY KEY,
+    "EmployeeID" INTEGER NOT NULL,
+    "DateTime" TIMESTAMP NOT NULL,
+    "Status" VARCHAR(20) CHECK ( "Status" IN ('scheduled', 'completed', 'cancelled')),
+    "ManagerApproval" BOOLEAN,
+    "SupervisorApproval" BOOLEAN,
+	"Cost" NUMERIC ,
+    CONSTRAINT fk_employee
+        FOREIGN KEY ("EmployeeID") REFERENCES "Supervisor"."HDye" ("ID")
+);
+ALTER TABLE "Salon"."HDyeApt"
+ADD COLUMN "appPeriod" NUMERIC;
+
+
 
