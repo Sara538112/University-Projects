@@ -1,0 +1,13 @@
+﻿@model CustomerData
+<head>
+    <link href="@Url.Content("~/css/SignIn.css")" rel="stylesheet" type="text/css" />
+</head>
+<form action="..\Kuafor\members" method="post">
+    ID <input class="form-control" type="text" name="Id" /><br />
+    Password <input class="form-control" type="text" name="Pass" /><br />
+    Name <input class="form-control" type="text" name="Name" /><br />
+    Phone <input class="form-control" type="text" name="Phone" /><br />
+    Email <input class="form-control" type="text" name="Email" /><br />
+
+    <input class="btn btn-success" type="submit" value="Sign In" />
+</form>

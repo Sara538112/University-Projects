@@ -1,0 +1,33 @@
+﻿@model Team
+
+<head>
+    <link href="@Url.Content("~/css/Team.css")" rel="stylesheet" type="text/css" />
+</head>
+<div class="Team-container">
+    <h3> Our Team</h3>
+    <div class="container">
+        <div class="CardsM">
+            @foreach(var manager in Model.Manager)
+            {
+                <div class="Photo"> <img src="@manager.Image" alt="Alternate Text" /> </div>
+                <div class="Name"> @manager.FullName  </div>
+            }
+        </div>
+        <div class="CardsS">
+            @foreach (var superv in Model.Supervisor)
+            {
+                <div class="Photo"> <img src="@superv.Image" alt="Alternate Text" /> </div>
+                <div class="Name"> @superv.FullName  </div>
+            }
+
+        </div>
+        <div class="CardsE">
+            @foreach (var employee in Model.Employees)
+            {
+                <div class="Photo"> <img src="@employee.Image" alt="Alternate Text" /> </div>
+                <div class="Name"> @employee.FullName  </div>
+            }
+
+        </div>
+    </div>
+</div>

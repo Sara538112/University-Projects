@@ -1,0 +1,107 @@
+﻿
+@model Servises
+@{
+    var servis = new Servises.servisesExample(); //?????
+
+    var hairCut= new Servises.HCut
+    {
+        DepName="Hair Cut",
+        Description = "Transform your look with our expert hair cutting services! From classic cuts to trendy styles, we create personalized haircuts that perfectly complement your personality. Let us give you a fresh, confident look."
+    };
+    var hairCare = new Servises.HCare
+    {
+        DepName = "Hair Care",
+        Description = "Nurture your hair with our advanced care treatments. Our specialists use premium products and techniques to restore shine, strength, and vitality. Indulge in a soothing experience that leaves your hair healthy and beautiful."
+    };
+    var hairDye = new Servises.HDye
+    {
+        DepName = "Hair Dye",
+        Description = "Discover a new shade of you with our professional hair dye services. Whether it’s bold and daring or natural and subtle, we bring your color dreams to life with precision and care. Vibrant, long-lasting results await!"
+    };
+    var Manikur = new Servises.Manikur
+    {
+        DepName = "Manikur",
+        Description = "Pamper your hands with our luxurious manicure services. From nail shaping to creative designs, we bring elegance and style to your fingertips. Treat yourself to a flawless finish and soft, beautiful hands."
+    }; 
+     var Padikur = new Servises.Pedikur
+    {
+        DepName = "Pedikur",
+        Description = "Relax and rejuvenate with our premium pedicure treatments. Enjoy exfoliation, hydration, and nail care for feet that look and feel amazing. Step out with confidence and comfort after a session of indulgence."
+    };
+}
+
+<head>
+    <link href="@Url.Content("~/css/Servises.css")" rel="stylesheet" type="text/css" />
+</head>
+<div class="containers">
+    <div class="con-1">
+        <div class="cards">
+            <div class="icon"><img src="~/image/037749a0872173d21978132c89ee16f3.jpg" alt="Alternate Text" /></div>
+            <h3>@hairCut.DepName</h3>
+            <div class="text">
+                <p>@hairCut.Description</p>
+                <aside class="schedule">
+                    <button class="buttonC" onclick="checkAuth('@hairCut.DepName')"> <img src="~/image/1f7fea29312bc86ab4c64326fae91e49.jpg" alt="Alternate Text" />  </button>
+                </aside>
+            </div>
+        </div>
+        <div class="cards">
+            <div class="icon"><img src="~/image//856667d41cfba0584794482cc403fa96.jpg" alt="Alternate Text" /></div>
+            <h3>@hairCare.DepName</h3>
+            <div class="text">
+                <p>@hairCare.Description</p>
+                <aside class="schedule">
+                    <button class="buttonC" onclick="checkAuth('@hairCare.DepName')"> <img src="~/image/1f7fea29312bc86ab4c64326fae91e49.jpg" alt="Alternate Text" />  </button>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <div class="con-2" >
+        <div class="cards">
+            <div class="icon"><img src="~/image/f9ad8a94b37bb0bd4c7198c94cf91284.jpg" alt="Alternate Text" /></div>
+            <h3>@hairDye.DepName</h3>
+            <div class="text">
+                <p>@hairDye.Description</p>
+                <aside class="schedule">
+                    <button class="buttonC"  onclick="checkAuth('@hairDye.DepName')"> <img src="~/image/1f7fea29312bc86ab4c64326fae91e49.jpg" alt="Alternate Text" />  </button>
+                </aside>
+            </div>
+        </div>
+        <div class="cards">
+            <div class="icon"><img src="~/image/d62c4f9dcae05766bd92557bb284ee70.jpg" alt="Alternate Text" /></div>
+            <h3>@Manikur.DepName</h3>
+            <div class="text">
+                <p>@Manikur.Description</p>
+                <aside class="schedule">
+                    <button class="buttonC" onclick="checkAuth('@Manikur.DepName')"> <img src="~/image/1f7fea29312bc86ab4c64326fae91e49.jpg" alt="Alternate Text" /> </button>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <div class="con-3">
+        <div class="cards">
+            <div class="icon"><img src="~/image/f3e9e11b7e193d40c221b2771fb29b50.jpg" alt="Alternate Text" /></div>
+            <h3>@Padikur.DepName</h3>
+            <div class="text">
+            <p>@Padikur.Description</p>
+            <aside class="schedule">
+                    <button class="buttonC"  onclick="checkAuth('@Padikur.DepName')">
+                        <img src="~/image/1f7fea29312bc86ab4c64326fae91e49.jpg" alt="Alternate Text" />
+                    </button>
+            </aside>
+
+        </div>
+    </div>   
+
+</div>
+<script>
+        function checkAuth(depName) {
+        if (@User.Identity.IsAuthenticated) {
+            window.location.href = '@Url.Action("CreatApp", "Appointments", new {depName= @servis.DepName})';
+        } else {
+            alert('Please log in first');
+                    window.location.href = '@Url.Action("LogIn", "User")';
+        }
+    }
+
+</script>
