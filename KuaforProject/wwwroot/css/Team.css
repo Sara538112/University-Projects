@@ -1,0 +1,37 @@
+﻿body {
+    background-image: url("https://i.pinimg.com/736x/ae/ef/f3/aeeff3263b21ebd366352aac939cdb2a.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    backdrop-filter: blur(9px);
+}
+
+.nav-item a {
+    color: white;
+}
+.photo-container {
+    background-color: #e0b68c;
+    width:100%;
+    height:510px;
+    align-items:center;
+    text-align:center;
+    color:white;
+    color:white;
+    padding:10px;
+    border-radius: 20%;
+}
+.Photo{
+    border-radius:20%;
+}
+.Photo img{
+    width:20px;
+    height:20px;
+}
+
+.Name{
+    text-align:center;
+    margin: 5px;
+}

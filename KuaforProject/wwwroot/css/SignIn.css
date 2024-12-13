@@ -1,0 +1,25 @@
+﻿body {
+    background-image: url("https://i.pinimg.com/736x/ae/ef/f3/aeeff3263b21ebd366352aac939cdb2a.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    backdrop-filter: blur(9px);
+}
+form {
+    backdrop-filter: blur(9px);
+    color:white;
+    justify-self:center;
+    padding:30px;
+}
+input {
+    border-radius: 15px;
+}
+.form-control{
+    padding:5px;
+}
+.btn {
+    background-color: #e0b68c;
+}

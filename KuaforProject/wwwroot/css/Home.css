@@ -1,14 +1,14 @@
-body {
+﻿body {
     background-image: url("https://i.pinimg.com/736x/ae/ef/f3/aeeff3263b21ebd366352aac939cdb2a.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .navbar {
-    backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px); 
 }
-.nav-item a {
-    color: white;
+.navbar a nav-link {
+    color: white !important;
 }
 .center {
     margin-top: 150px;
@@ -32,4 +32,7 @@ body {
     border: none;
     border-radius: 30px;
     margin: 20px;
+}
+footer{
+    color:white;
 }

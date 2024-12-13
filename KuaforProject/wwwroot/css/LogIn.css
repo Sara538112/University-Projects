@@ -1,0 +1,38 @@
+﻿body {
+    background-image: url("https://i.pinimg.com/736x/ae/ef/f3/aeeff3263b21ebd366352aac939cdb2a.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    backdrop-filter: blur(9px);
+}
+.screen {
+    backdrop-filter: blur(9px);
+    border-radius: 15%;
+    justify-items: center;
+    margin-top:90px;
+}
+.information {
+    color: white;
+    margin: 15%;
+    padding: 15px;
+}
+input {
+    border-radius: 15px;
+}
+.id {
+    display: grid;
+    padding: 10%;
+}
+.pass {
+    display: grid;
+    padding: 10%;
+}
+button {
+    background-color: #e0b68c;
+    color: white;
+    padding: 5px;
+    border-radius: 15px;
+}
