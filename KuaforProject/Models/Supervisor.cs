@@ -1,4 +1,4 @@
-﻿using b221210566_2_.Models;
+using b221210566_2_.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,6 +12,10 @@ namespace b221210566_2_.Models
             public int Id { get; set; } 
 
             [Required]
+            [MinLength(4)]
+            public String password { get; set; }
+
+            [Required]
             [MaxLength(50)]
             public string FullName { get; set; }
 
@@ -19,10 +23,14 @@ namespace b221210566_2_.Models
             [Required]
             public string EmailAddress { get; set; }
 
-            [Required]
+
+        [Required]
+            public byte[] Image { get; set; }
+
+        [Required]
             [ForeignKey("DirectManagerID")]
             public int DirectManagerID { get; set; }
-            public Manager.SalonManager DirectManager { get; set; }
+            public SalonManager DirectManager { get; set; }
         }
 
         [Table("HCutSv")]
