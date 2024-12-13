@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url("https://i.pinimg.com/736x/ae/ef/f3/aeeff3263b21ebd366352aac939cdb2a.jpg");
+    background-image: url("https://i.pinimg.com/736x/9d/04/ad/9d04ad766bf63af247e87717483aa128.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -10,6 +10,7 @@
 }
 form {
     backdrop-filter: blur(9px);
+     background-color: rgba(245, 245, 220, 0.2);
     color:white;
     justify-self:center;
     padding:30px;
