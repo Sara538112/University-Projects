@@ -5,13 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace b221210566_2_.Models
 {
     [Table("CustomerData")]
-    public class CustomerData
+    public class CustomerData :User
     {
-
-        [Key]
-        [Column ("CID")]
-        public int CID { get; set; }
-
 
         [Required]
         [MinLength(4)]
