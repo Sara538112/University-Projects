@@ -5,11 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace b221210566_2_.Models
 {
    
-        public class  EmployeeExample
+        public class  EmployeeExample :User
         {
-            [Key]
-            public int Id { get; set; }
-
+         
             [Required]
             [MinLength(4)]
             public String password { get; set; }
@@ -25,45 +23,30 @@ namespace b221210566_2_.Models
             [Required]
             public byte[] Image { get; set; }
 
-
-            
-        [ForeignKey("DirectManagerID")]
-            public int DirectManagerID { get; set; }
+            [Required]
             public SalonManager DirectManager { get; set; }
         }
         [Table("HCutEmp")]
         public class HCutEmp : EmployeeExample
-        {
-
-            [Required]
-            [ForeignKey("SupervisorID")]
-            public int SupervisorID { get; set; }
-            public  HCutSv SupervisorC { get; set; }
-            
+        { 
+           [Required]
+             public HCareSv HCareSv { get; set;
         }
 
 
         [Table("HDyeEmp")]
         public class HDyeEmp : EmployeeExample
         {
+           [Required]
 
-
-            [Required]
-            [ForeignKey("SupervisorID")]
-            public int SupervisorID { get; set; }
-            public HDyeSv SupervisorD { get; set; }
-
+            public HDyeSv HDyeSv { get; set; }
         }
         
         [Table("HCareEmp")]
         public class HCareEmp : EmployeeExample
         {
-
-
-            [Required]
-            [ForeignKey("SupervisorID")]
-            public int SupervisorID { get; set; }
-            public  HCareSv SupervisorCR { get; set; }
+             [Required]
+             public HCareSv HCareSv { get; set; }
 
         }
 
@@ -72,9 +55,8 @@ namespace b221210566_2_.Models
         public class ManikurE : EmployeeExample
         {
             [Required]
-            [ForeignKey("SupervisorID")] 
-            public int SupervisorID { get; set; }
-            public  ManikurS SupervisorM { get; set; }
+                      public ManikurS ManikurS { get; set; }
+
 
         }
         [Table("PadikurE")]
@@ -82,9 +64,7 @@ namespace b221210566_2_.Models
         public class PadikurE : EmployeeExample
         {
             [Required]
-            [ForeignKey("SupervisorID")]
-            public int SupervisorID { get; set; }
-            public  PadikurS SupervisorP { get; set; }
+            public PadikurS PadikurS { get; set; }
 
         }
     }
