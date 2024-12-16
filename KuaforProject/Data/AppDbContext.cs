@@ -7,11 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static b221210566_2_.Models.Manager;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace b221210566_2_.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         protected readonly IConfiguration configuration;
         public AppDbContext(DbContextOptions<AppDbContext> options, IConfiguration configuration)
@@ -32,9 +33,9 @@ namespace b221210566_2_.Data
         public DbSet<PadikurS> PadikurS { get; set; }
 
 
-        public DbSet<Manager.GeneralManager> GManager { get; set; }
-        public DbSet<Manager.SalonManager> SManager { get; set; }
-        public DbSet<Manager.FinancialManager> FManagers { get; set; }
+        public DbSet<GeneralManager> GManager { get; set; }
+        public DbSet<SalonManager> SManager { get; set; }
+        public DbSet<FinancialManager> FManagers { get; set; }
 
 
         public DbSet<CustomerData> Customers { get; set; }
@@ -47,9 +48,10 @@ namespace b221210566_2_.Data
         public DbSet<Servises.HDye> HairDye { get; set; }
         public DbSet<Servises.Manikur> Manicure { get; set; }
         public DbSet<Servises.Pedikur> Pedicure { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
-
-
+        public DbSet<User> users { get; set; }
+        //public DbSet<Department> Departments { get; set; }
 
 
 
@@ -67,6 +69,11 @@ namespace b221210566_2_.Data
             modelBuilder.Entity<Servises.HDye>().HasNoKey();
             modelBuilder.Entity<Servises.Manikur>().HasNoKey();
             modelBuilder.Entity<Servises.Pedikur>().HasNoKey();
+            modelBuilder.Entity<Servises.Pedikur>().HasNoKey();
+
+            modelBuilder.Entity<Team>().HasNoKey();
+
+
 
             base.OnModelCreating(modelBuilder);
 
@@ -78,3 +85,7 @@ namespace b221210566_2_.Data
     }
 
 }
+
+
+
+    
