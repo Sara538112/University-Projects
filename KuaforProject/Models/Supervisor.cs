@@ -6,11 +6,9 @@ namespace b221210566_2_.Models
 {
     //public abstract class Supervisor
     
-        public class SupervisorExample
+        public class SupervisorExample : User
         {
-            [Key]
-            public int Id { get; set; } 
-
+          
             [Required]
             [MinLength(4)]
             public String password { get; set; }
@@ -27,10 +25,8 @@ namespace b221210566_2_.Models
         [Required]
             public byte[] Image { get; set; }
 
-        [Required]
-            [ForeignKey("DirectManagerID")]
-            public int DirectManagerID { get; set; }
-            public SalonManager DirectManager { get; set; }
+       [Required]
+             public SalonManager DirekManager { get; set; }
         }
 
         [Table("HCutSv")]
